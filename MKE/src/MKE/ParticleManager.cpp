@@ -51,8 +51,8 @@ namespace mke
 				float direction = emitter->direction;
 				direction += random.getReal<float>(emitter->direction_offset.first, emitter->direction_offset.second);
 				float speed = random.getReal<float>(emitter->speed_range.first, emitter->speed_range.second);
-				particle.velocity.x = speed * cosf(direction);
-				particle.velocity.y = speed * sinf(direction);
+				particle.velocity.x = speed * cosf(mke::util::toRad(direction));
+				particle.velocity.y = speed * sinf(mke::util::toRad(direction));
 				size_t colors_count = emitter->colors.size();
 				if (emitter->colors.size() > 1)
 					particle.color = emitter->colors[random.getInt<unsigned int>(0, colors_count - 1)];
