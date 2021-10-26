@@ -1,0 +1,20 @@
+{
+  "frames": [
+    {
+      "name": "RunRight01.png",
+      "duration": 0.15
+    },
+    {
+      "name": "RunRight02.png",
+      "duration": 0.15
+    },
+    {
+      "name": "RunRight03.png",
+      "duration": 0.15
+    },
+    {
+      "name": "RunRight04.png",
+      "duration": 0.15
+    }
+  ]
+}

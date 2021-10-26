@@ -42,7 +42,7 @@ namespace mke
 				"\" and filename \"" << filename << "\" could not be loaded\n";
 			exit(-1);
 		}
-		size_t found = filename.find('.');
+		size_t found = filename.find_last_of(".");
 		filename = filename.substr(0, found) + ".json";
 		std::ifstream file(filename);
 		if (!file)
