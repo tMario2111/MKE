@@ -75,7 +75,7 @@ namespace mke
 		/// <returns>a reference to the music (that opens from file)</returns>
 		sf::Music& getMusicAs(std::string name);
 	private:
-		const unsigned int sounds_limit = 255;
+		const unsigned int sounds_limit = 256;
 		std::unordered_map<std::string, sf::SoundBuffer> sound_buffers;
 		std::vector<std::unique_ptr<sf::Sound>> sounds;
 		std::map<std::string, std::string> music_filenames;
