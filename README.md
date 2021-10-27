@@ -1,6 +1,6 @@
 # MKE
 
-## Description
+### Description
 
 MKE in a simple extension to SFML that comes with the following features:
 - State machine
@@ -15,10 +15,12 @@ MKE in a simple extension to SFML that comes with the following features:
 - Particle manager
 - Other utilities
 
-## Documentation
+### Documentation
+
 The documentation can be found in the source code. 
 
-## Tutorials
+### Tutorials
+
 There are several examples in the "examples" folder
 
 ### Dependencies
