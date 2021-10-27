@@ -18,61 +18,61 @@ namespace mke
 	public:
 
 		/// <summary>
-		/// load a sound buffer
+		/// Load a sound buffer
 		/// </summary>
-		/// <param name="name">sound buffer name</param>
-		/// <param name="filename">sound buffer filename</param>
+		/// <param name="name">: Sound buffer name</param>
+		/// <param name="filename">: Sound buffer file path</param>
 		void loadSoundBuffer(std::string name, std::string filename);
 
 		/// <summary>
-		/// unload a sound buffer
+		/// Unload a sound buffer
 		/// </summary>
-		/// <param name="name">sound buffer name</param>
+		/// <param name="name">: Sound buffer name</param>
 		void unloadSoundBuffer(std::string name);
 
 		/// <summary>
-		/// play a sound
+		/// Play a sound
 		/// </summary>
-		/// <param name="name">sound buffer name</param>
+		/// <param name="name">: Sound buffer name</param>
 		void playSound(std::string name);
 
 		/// <summary>
-		/// play a sound
+		/// Play a sound
 		/// </summary>
-		/// <param name="name">sound buffer name</param>
-		/// <param name="settings">lambda for sound settings</param>
+		/// <param name="name">: Sound buffer name</param>
+		/// <param name="settings">: Lambda for sound settings</param>
 		void playSound(std::string name, std::function<void(sf::Sound&)> settings);
 
 		/// <summary>
-		/// must be called at the start of the main loop so that sounds can be disposed of
+		/// Must be called at the start of the main loop so that sounds can be disposed of
 		/// </summary>
 		void update();
 
 		/// <summary>
-		/// set music filename
+		/// Set music filename
 		/// </summary>
-		/// <param name="name">music name</param>
-		/// <param name="filename">music filename</param>
+		/// <param name="name">: Music name</param>
+		/// <param name="filename">: Music file path</param>
 		void setMusicFilename(std::string name, std::string filename);
 
 		/// <summary>
-		/// get music filename
+		/// Get music filename
 		/// </summary>
-		/// <param name="name">music name</param>
-		/// <returns>a string with the music filename</returns>
+		/// <param name="name">: Music name</param>
+		/// <returns>A string with the music file path</returns>
 		std::string getMusicFilename(std::string name);
 
 		/// <summary>
-		/// get the music
+		/// Get the music
 		/// </summary>
-		/// <returns>a reference to the music</returns>
+		/// <returns>A reference to the music</returns>
 		sf::Music& getMusic();
 
 		/// <summary>
-		/// get the music
+		/// Get the music
 		/// </summary>
-		/// <param name="name">music name (to open from file)</param>
-		/// <returns>a reference to the music (that opens from file)</returns>
+		/// <param name="name">: Music name (to open from file)</param>
+		/// <returns>A reference to the music (that opens from file)</returns>
 		sf::Music& getMusicAs(std::string name);
 	private:
 		const unsigned int sounds_limit = 255;

@@ -23,7 +23,7 @@ namespace mke
 		/// <summary>
 		/// Default constructor
 		/// </summary>
-		/// <param name="win">a RenderWindow</param>
+		/// <param name="win">: A RenderWindow</param>
 		ShadowCaster(sf::RenderWindow& win);
 
 		/// <summary>
@@ -35,26 +35,26 @@ namespace mke
 		/// <summary>
 		/// Set the rays' radius
 		/// </summary>
-		/// <param name="radius">the maximum lenght of every ray</param>
+		/// <param name="radius">: The maximum lenght of every ray</param>
 		void setRadius(float radius);
 
 		/// <summary>
 		/// Get the radius
 		/// </summary>
-		/// <returns>the radius</returns>
+		/// <returns>The radius</returns>
 		float getRadius();
 
 		/// <summary>
 		/// Update the ShadowCaster (must be called every frame)
 		/// </summary>
-		/// <param name="reference_point">the point that the rays are casted from (player's position etc.)</param>
+		/// <param name="reference_point">: The point that the rays are casted from (player's position etc.)</param>
 		void update(sf::Vector2f reference_point);
 
 		/// <summary>
 		/// Draw function (inherited from sf::Drawable)
 		/// </summary>
-		/// <param name="target">the sf::RenderTarget</param>
-		/// <param name="states">the sf::RenderStates</param>
+		/// <param name="target">: The sf::RenderTarget</param>
+		/// <param name="states">: The sf::RenderStates</param>
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	private:
 		struct Ray

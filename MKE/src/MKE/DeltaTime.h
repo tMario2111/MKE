@@ -6,21 +6,21 @@ namespace mke
 {
 
 	/// <summary>
-	/// a class that manages delta time
+	/// A class that manages delta time
 	/// </summary>
 	class DeltaTime
 	{
 	public:
 
 		/// <summary>
-		/// updates the delta time (must be called at the start of the main loop)
+		/// Updates the delta time (must be called at the start of the main loop)
 		/// </summary>
 		void update();
 
 		/// <summary>
-		/// get the delta time
+		/// Get the delta time
 		/// </summary>
-		/// <returns>an sf::Time that represents the delta time</returns>
+		/// <returns>An sf::Time that represents the delta time</returns>
 		sf::Time get();
 	private:
 		sf::Clock clock;

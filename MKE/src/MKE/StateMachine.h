@@ -11,7 +11,7 @@ namespace mke
 {	
 
 	/// <summary>
-	/// a state machine class 
+	/// A state machine class 
 	/// </summary>
 	class StateMachine
 	{
@@ -20,9 +20,9 @@ namespace mke
 		/// <summary>
 		/// Push a new state to the stack
 		/// </summary>
-		/// <typeparam name="T">State type</typeparam>
+		/// <typeparam name="T">: State type</typeparam>
 		/// <typeparam name="...Args"></typeparam>
-		/// <param name="...args">State constructor arguments</param>
+		/// <param name="...args">: State constructor arguments</param>
 		template<typename T, typename... Args> void push(Args &&... args);
 
 		/// <summary>
@@ -33,7 +33,7 @@ namespace mke
 		/// <summary>
 		/// Pop states off the stack until a state of type 'T' is reached 
 		/// </summary>
-		/// <typeparam name="T">State type</typeparam>
+		/// <typeparam name="T">: State type</typeparam>
 		template<typename T> void popStatesUntil();
 
 		/// <summary>
@@ -51,7 +51,7 @@ namespace mke
 		/// <summary>
 		/// Get a reference to the first state of type 'T' that isn't at the top of the stack
 		/// </summary>
-		/// <typeparam name="T">State type</typeparam>
+		/// <typeparam name="T">: State type</typeparam>
 		/// <returns>A reference to the state</returns>
 		template<typename T> T& peekFirst();
 

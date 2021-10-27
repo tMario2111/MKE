@@ -7,45 +7,45 @@ namespace mke
 {
 
 	/// <summary>
-	/// a class that wraps <random> and uses std::default_random_engine
+	/// A class that wraps <random> and uses std::default_random_engine
 	/// </summary>
 	class Random
 	{
 	public:
 
 		/// <summary>
-		/// set a new custom seed 
+		/// Set a new custom seed 
 		/// </summary>
-		/// <param name="seed">the seed</param>
+		/// <param name="seed">: The seed</param>
 		void setCustomSeed(unsigned long int seed);
 
 		/// <summary>
-		/// sets a new unique seed (using std::random_device)
+		/// Sets a new unique seed (using std::random_device)
 		/// </summary>
 		void setUniqueSeed();
 
 		/// <summary>
-		/// get the engine's seed
+		/// Get the engine's seed
 		/// </summary>
-		/// <returns>engine's seed</returns>
+		/// <returns>Engine's seed</returns>
 		unsigned long int getSeed();
 
 		/// <summary>
-		/// get a random integer
+		/// Get a random integer
 		/// </summary>
-		/// <typeparam name="T">integer type</typeparam>
-		/// <param name="min">minimum value</param>
-		/// <param name="max">maximum value</param>
-		/// <returns>a random integer</returns>
+		/// <typeparam name="T">: Integer type</typeparam>
+		/// <param name="min">: Minimum value</param>
+		/// <param name="max">: Maximum value</param>
+		/// <returns>A random integer</returns>
 		template<typename T> T getInt(T min, T max);
 
 		/// <summary>
-		/// get a random real number
+		/// Get a random real number
 		/// </summary>
-		/// <typeparam name="T">real type</typeparam>
-		/// <param name="min">minimum value</param>
-		/// <param name="max">maximum value</param>
-		/// <returns>a random real</returns>
+		/// <typeparam name="T">: Real type</typeparam>
+		/// <param name="min">: Minimum value</param>
+		/// <param name="max">: Maximum value</param>
+		/// <returns>A random real</returns>
 		template<typename T> T getReal(T min, T max);
 	private:
 		std::random_device r;

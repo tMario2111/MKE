@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
 
 #include "Random.h"
@@ -45,7 +47,7 @@ namespace mke
 			/// <summary>
 			/// Copy settings constructor
 			/// </summary>
-			/// <param name="settings">a reference to another emitter (to copy the settings from)</param>
+			/// <param name="settings">: A reference to another emitter (to copy the settings from)</param>
 			Emitter(const Emitter& settings);
 
 			/// <summary>
@@ -93,26 +95,26 @@ namespace mke
 		/// <summary>
 		/// Add a new Emitter 
 		/// </summary>
-		/// <param name="emitter"></param>
+		/// <param name="emitter">: A reference to an emitter</param>
 		void addEmitter(Emitter& emitter);
 
 		/// <summary>
 		/// Erase an Emitter
 		/// </summary>
-		/// <param name="emitter">the Emitter that's going to be erased</param>
+		/// <param name="emitter">: A reference to the emitter that's going to be erased</param>
 		void eraseEmitter(Emitter& emitter);
 
 		/// <summary>
 		/// Update the particles (must be called every frame)
 		/// </summary>
-		/// <param name="dt"></param>
+		/// <param name="dt">: Delta time</param>
 		void update(const sf::Time dt);
 
 		/// <summary>
 		/// Draws the particles (inherited from sf::Drawable)
 		/// </summary>
-		/// <param name="target">the sf::RenderTarget</param>
-		/// <param name="states">the sf::RenderStates</param>
+		/// <param name="target">: The sf::RenderTarget</param>
+		/// <param name="states">: The sf::RenderStates</param>
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	private:
 		std::list<Particle> particles;

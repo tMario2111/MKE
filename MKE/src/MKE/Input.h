@@ -8,7 +8,7 @@ namespace mke
 {
 
 	/// <summary>
-	/// a class that manager input
+	/// A class that manager input
 	/// </summary>
 	class Input
 	{
@@ -17,7 +17,7 @@ namespace mke
 		/// <summary>
 		/// Process keyboard and mouse events
 		/// </summary>
-		/// <param name="event">Currently polled event</param>
+		/// <param name="event">: Currently polled event</param>
 		void processEvent(const sf::Event& event);
 
 		/// <summary>
@@ -28,29 +28,29 @@ namespace mke
 		/// <summary>
 		/// Check if a keyboard key is pressed
 		/// </summary>
-		/// <param name="key">Keyboard key</param>
-		/// <returns>true if pressed, otherwise false</returns>
+		/// <param name="key">: Keyboard key</param>
+		/// <returns>True if pressed, otherwise false</returns>
 		bool isKeyPressed(sf::Keyboard::Key key);
 
 		/// <summary>
 		/// Check if a keyboard key is released
 		/// </summary>
-		/// <param name="key">Keyboard key</param>
-		/// <returns>true if released, otherwise false</returns>
+		/// <param name="key">: Keyboard key</param>
+		/// <returns>True if released, otherwise false</returns>
 		bool isKeyReleased(sf::Keyboard::Key key);
 
 		/// <summary>
 		/// Check if a mouse button is pressed
 		/// </summary>
-		/// <param name="button">Mouse button</param>
-		/// <returns>true if pressed, otherwise false</returns>
+		/// <param name="button">: Mouse button</param>
+		/// <returns>True if pressed, otherwise false</returns>
 		bool isMouseButtonPressed(sf::Mouse::Button button);
 
 		/// <summary>
 		/// Check if a mouse button is released
 		/// </summary>
-		/// <param name="button">Mouse button</param>
-		/// <returns>true if released, otherwise false</returns>
+		/// <param name="button">: Mouse button</param>
+		/// <returns>True if released, otherwise false</returns>
 		bool isMouseButtonReleased(sf::Mouse::Button button);
 
 	private:

@@ -1,8 +1,7 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-
 #include <nlohmann/json.hpp>
+#include <SFML/Graphics.hpp>
 
 #include <fstream>
 #include <iostream>
@@ -14,41 +13,41 @@
 namespace mke
 {
 	/// <summary>
-	/// a manager class for your assets
+	/// A manager class for your assets
 	/// </summary>
 	class AssetManager
 	{
 	public:
 
 		/// <summary>
-		/// load a texture from a file
+		/// Load a texture from a file
 		/// </summary>
-		/// <param name="name">texture name</param>
-		/// <param name="filename">texture filename</param>
+		/// <param name="name">: Texture name</param>
+		/// <param name="filename">: Texture file path</param>
 		void loadTexture(std::string name, std::string filename);
 
 		/// <summary>
-		/// insert a texture
+		/// Insert a texture
 		/// </summary>
-		/// <param name="name">texture name</param>
-		/// <param name="texture">a reference to the texture that's going to be inserted</param>
+		/// <param name="name">: Texture name</param>
+		/// <param name="texture">: A reference to the texture that's going to be inserted</param>
 		void loadTexture(std::string name, sf::Texture& texture);
 
 		/// <summary>
-		/// return a reference to a texture
+		/// Return a reference to a texture
 		/// </summary>
-		/// <param name="name">texture name</param>
-		/// <returns>a reference to a texture</returns>
+		/// <param name="name">: Texture name</param>
+		/// <returns>A reference to a texture</returns>
 		sf::Texture& getTexture(std::string name);
 
 		/// <summary>
-		/// unload a texture
+		/// Unload a texture
 		/// </summary>
-		/// <param name="name">texture name</param>
+		/// <param name="name">: Texture name</param>
 		void unloadTexture(std::string name);
 
 		/// <summary>
-		/// a struct that stores the atlas texture as well as its frames
+		/// A struct that stores the atlas texture as well as its frames
 		/// </summary>
 		struct AtlasContent
 		{
@@ -57,89 +56,89 @@ namespace mke
 		};
 
 		/// <summary>
-		/// load an atlas from a file (the image file and the json file must be in the same directory and have the same name)
+		/// Load an atlas from a file (the image file and the json file must be in the same directory and have the same name)
 		/// </summary>
-		/// <param name="name">atlas name</param>
-		/// <param name="filename">atlas filename (image and json)</param>
+		/// <param name="name">: Atlas name</param>
+		/// <param name="filename">: Atlas filename (image and json)</param>
 		void loadAtlas(std::string name, std::string filename);
 
 		/// <summary>
-		/// get a reference to the contents of an atlas (texture and frames)
+		/// Get a reference to the contents of an atlas (texture and frames)
 		/// </summary>
-		/// <param name="name">atlas name</param>
-		/// <returns>a reference to an atlas</returns>
+		/// <param name="name">: Atlas name</param>
+		/// <returns>A reference to an atlas</returns>
 		AtlasContent& getAtlas(std::string name);
 
 		/// <summary>
-		/// get the frame of an atlas
+		/// Get the frame of an atlas
 		/// </summary>
-		/// <param name="atlas_name">atlas name</param>
-		/// <param name="frame_name">frame name (defined in the json)</param>
-		/// <returns>an sf::IntRect of the frame</returns>
+		/// <param name="atlas_name">: Atlas name</param>
+		/// <param name="frame_name">: Frame name (defined in the json)</param>
+		/// <returns>An sf::IntRect of the frame</returns>
 		sf::IntRect getAtlasFrame(std::string atlas_name, std::string frame_name);
 
 		/// <summary>
-		/// get the texture of an atlas
+		/// Get the texture of an atlas
 		/// </summary>
-		/// <param name="name">atlas name</param>
-		/// <returns>a reference to the texture</returns>
+		/// <param name="name">: Atlas name</param>
+		/// <returns>A reference to the texture</returns>
 		sf::Texture& getAtlasTexture(std::string name);
 
 		/// <summary>
-		/// unload an atlas
+		/// Unload an atlas
 		/// </summary>
-		/// <param name="name">atlas name</param>
+		/// <param name="name">: Atlas name</param>
 		void unloadAtlas(std::string name);
 
 		/// <summary>
-		/// load a font
+		/// Load a font
 		/// </summary>
-		/// <param name="name">font name</param>
-		/// <param name="filename">font filename</param>
+		/// <param name="name">: Font name</param>
+		/// <param name="filename">: Font file path</param>
 		void loadFont(std::string name, std::string filename);
 		
 		/// <summary>
-		/// get a font
+		/// Get a font
 		/// </summary>
-		/// <param name="name">font name</param>
-		/// <returns>a reference to a font</returns>
+		/// <param name="name">: Font name</param>
+		/// <returns>A reference to a font</returns>
 		sf::Font& getFont(std::string name);
 
 		/// <summary>
-		/// unload a font
+		/// Unload a font
 		/// </summary>
-		/// <param name="name">font name</param>
+		/// <param name="name">: Font name</param>
 		void unloadFont(std::string name);
 
 		/// <summary>
-		/// a manager for custom assets
+		/// A manager for custom assets
 		/// </summary>
-		/// <typeparam name="T">your asset type</typeparam>
+		/// <typeparam name="T">: Your asset type</typeparam>
 		template<typename T> class CustomManager
 		{
 		public:
 
 			/// <summary>
-			/// load a new assets
+			/// Load a new asset
 			/// </summary>
-			/// <typeparam name="...Args"></typeparam>
-			/// <param name="name">asset name</param>
-			/// <param name="...args">asset constructor arguments (if necessary)</param>
-			/// <returns></returns>
+			/// <typeparam name="...Args">: Asset constructor arguments template</typeparam>
+			/// <param name="name">: Asset name</param>
+			/// <param name="...args">: Asset constructor arguments (if necessary)</param>
+			/// <returns>A reference to the assets</returns>
 			template<typename... Args>
 			T& loadNew(std::string name, Args &&... args);
 
 			/// <summary>
-			/// get an asset
+			/// Get an asset
 			/// </summary>
-			/// <param name="name">asset name</param>
-			/// <returns>a reference to an asset</returns>
+			/// <param name="name">: Asset name</param>
+			/// <returns>A reference to an asset</returns>
 			T& get(std::string name);
 
 			/// <summary>
-			/// unload an asset
+			/// Unload an asset
 			/// </summary>
-			/// <param name="name">asset name</param>
+			/// <param name="name">: Asset name</param>
 			void unload(std::string name);
 		private:
 			std::unordered_map<std::string, std::unique_ptr<T>> map;
