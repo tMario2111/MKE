@@ -2,7 +2,7 @@
 
 ### Description
 
-MKE in a simple extension to SFML that comes with the following features:
+MKE is an extension to SFML that comes with the following features:
 - State machine
 - Asset manager
 - Sound manager
