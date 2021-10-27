@@ -19,14 +19,14 @@ namespace mke
 	}
 	void SoundManager::playSound(std::string name)
 	{
-		if (sounds.size() > sounds_limit)
+		if (sounds.size() == sounds_limit)
 			sounds.erase(sounds.begin());
 		sounds.push_back(std::make_unique<sf::Sound>(sound_buffers[name]));
 		sounds[sounds.size() - 1]->play();
 	}
 	void SoundManager::playSound(std::string name, std::function<void(sf::Sound&)> settings)
 	{
-		if (sounds.size() > sounds_limit)
+		if (sounds.size() == sounds_limit)
 			sounds.erase(sounds.begin());
 		sounds.push_back(std::make_unique<sf::Sound>(sound_buffers[name]));
 		sf::Sound& sound = *sounds[sounds.size() - 1];
