@@ -20,3 +20,7 @@ The documentation can be found in the source code.
 
 ## Tutorials
 There are several examples in the "examples" folder
+
+### Dependencies
+- SFML
+- nlohmann/json
