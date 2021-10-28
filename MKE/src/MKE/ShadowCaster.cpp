@@ -3,6 +3,7 @@
 namespace mke
 {
 	ShadowCaster::ShadowCaster(sf::RenderWindow& win) :
+		win(win),
 		vision_triangle_fan(sf::PrimitiveType::TriangleFan)
 	{
 		render_texture.create(win.getSize().x, win.getSize().y);
@@ -57,9 +58,9 @@ namespace mke
 
 		std::sort(corners.begin(), corners.end(), [](const sf::Vector2f& A, const sf::Vector2f& B)
 			{
-				if (A.y < B.y)
+				if (A.y > B.y)
 					return true;
-				if (A.y == B.y && A.x < B.x)
+				if (A.y == B.y && A.x > B.x)
 					return true;
 				return false;
 			});
@@ -71,7 +72,7 @@ namespace mke
 		{
 			Ray ray;
 			float angle = atan2f(i.y - reference_point.y, i.x - reference_point.x);
-	
+
 			ray.position.x = reference_point.x + radius * cosf(angle);
 			ray.position.y = reference_point.y + radius * sinf(angle);
 			ray.angle = angle;
@@ -129,6 +130,7 @@ namespace mke
 	}
 	void ShadowCaster::drawToRenderTexture()
 	{
+		render_texture.setView(win.getView());
 		render_texture.clear();
 		render_texture.draw(vision_triangle_fan);
 		render_texture.display();
@@ -144,6 +146,9 @@ namespace mke
 	void ShadowCaster::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		states.shader = &shader;
-		target.draw(sf::RectangleShape(static_cast<sf::Vector2f>(render_texture.getSize())), states);
+		sf::RectangleShape rect(static_cast<sf::Vector2f>(win.getSize()));
+		rect.setPosition(win.getView().getCenter().x - win.getView().getSize().x / 2,
+			win.getView().getCenter().y - win.getView().getSize().y / 2);
+		target.draw(rect, states);
 	}
 }

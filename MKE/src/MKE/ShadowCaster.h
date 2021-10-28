@@ -57,6 +57,7 @@ namespace mke
 		/// <param name="states">: The sf::RenderStates</param>
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	private:
+		sf::RenderWindow& win;
 		struct Ray
 		{
 			float angle;
