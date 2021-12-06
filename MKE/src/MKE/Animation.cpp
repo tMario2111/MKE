@@ -11,7 +11,7 @@ namespace mke
 		this->atlas = &atlas;
 		sprite.setTexture(atlas.texture);
 	}
-	void Animation::loadFromFile(std::string filename)
+	void Animation::loadFromFile(const std::string& filename)
 	{
 		std::ifstream file(filename);
 		if (!file)
@@ -40,7 +40,7 @@ namespace mke
 			frames.push_back(frame);
 		}
 	}
-	void Animation::addFrame(std::string frame_name, sf::Time duration)
+	void Animation::addFrame(const std::string& frame_name, sf::Time duration)
 	{
 		if (atlas == nullptr)
 		{
@@ -52,7 +52,7 @@ namespace mke
 		frame.duration = duration;
 		frames.push_back(frame);
 	}
-	void Animation::setSpriteFrame(std::string frame_name)
+	void Animation::setSpriteFrame(const std::string& frame_name)
 	{
 		sprite.setTextureRect(atlas->frames[frame_name]);
 	}
@@ -70,7 +70,7 @@ namespace mke
 		frames_index = 0;
 		clock = sf::seconds(0.f);
 	}
-	void Animation::run(sf::Time dt)
+	void Animation::run(const sf::Time dt)
 	{
 		clock += dt;
 		if (clock > frames[frames_index].duration)

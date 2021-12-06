@@ -2,7 +2,7 @@
 
 namespace mke
 {
-	void SoundManager::loadSoundBuffer(std::string name, std::string filename)
+	void SoundManager::loadSoundBuffer(const std::string& name, const std::string& filename)
 	{
 		if (sound_buffers.count(name) == 1)
 			return;
@@ -13,18 +13,18 @@ namespace mke
 			exit(-1);
 		}
 	}
-	void SoundManager::unloadSoundBuffer(std::string name)
+	void SoundManager::unloadSoundBuffer(const std::string& name)
 	{
 		sound_buffers.erase(name);
 	}
-	void SoundManager::playSound(std::string name)
+	void SoundManager::playSound(const std::string& name)
 	{
 		if (sounds.size() == sounds_limit)
 			sounds.erase(sounds.begin());
 		sounds.push_back(std::make_unique<sf::Sound>(sound_buffers[name]));
 		sounds[sounds.size() - 1]->play();
 	}
-	void SoundManager::playSound(std::string name, std::function<void(sf::Sound&)> settings)
+	void SoundManager::playSound(const std::string& name, std::function<void(sf::Sound&)> settings)
 	{
 		if (sounds.size() == sounds_limit)
 			sounds.erase(sounds.begin());
@@ -40,11 +40,11 @@ namespace mke
 				return sound->getStatus() == sf::Sound::Stopped;
 			}), sounds.end());
 	}
-	void SoundManager::setMusicFilename(std::string name, std::string filename)
+	void SoundManager::setMusicFilename(const std::string& name, const std::string& filename)
 	{
 		music_filenames[name] = filename;
 	}
-	std::string SoundManager::getMusicFilename(std::string name)
+	std::string SoundManager::getMusicFilename(const std::string& name)
 	{
 		return music_filenames[name];
 	}
@@ -52,7 +52,7 @@ namespace mke
 	{
 		return music;
 	}
-	sf::Music& SoundManager::getMusicAs(std::string name)
+	sf::Music& SoundManager::getMusicAs(const std::string& name)
 	{
 		music.stop();
 		music.openFromFile(music_filenames[name]);

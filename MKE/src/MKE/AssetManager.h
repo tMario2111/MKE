@@ -24,27 +24,27 @@ namespace mke
 		/// </summary>
 		/// <param name="name">: Texture name</param>
 		/// <param name="filename">: Texture file path</param>
-		void loadTexture(std::string name, std::string filename);
+		void loadTexture(const std::string& name, const std::string& filename);
 
 		/// <summary>
 		/// Insert a texture
 		/// </summary>
 		/// <param name="name">: Texture name</param>
 		/// <param name="texture">: A reference to the texture that's going to be inserted</param>
-		void loadTexture(std::string name, sf::Texture& texture);
+		void loadTexture(const std::string& name, const sf::Texture& texture);
 
 		/// <summary>
 		/// Return a reference to a texture
 		/// </summary>
 		/// <param name="name">: Texture name</param>
 		/// <returns>A reference to a texture</returns>
-		sf::Texture& getTexture(std::string name);
+		sf::Texture& getTexture(const std::string& name);
 
 		/// <summary>
 		/// Unload a texture
 		/// </summary>
 		/// <param name="name">: Texture name</param>
-		void unloadTexture(std::string name);
+		void unloadTexture(const std::string& name);
 
 		/// <summary>
 		/// A struct that stores the atlas texture as well as its frames
@@ -60,14 +60,14 @@ namespace mke
 		/// </summary>
 		/// <param name="name">: Atlas name</param>
 		/// <param name="filename">: Atlas filename (image and json)</param>
-		void loadAtlas(std::string name, std::string filename);
+		void loadAtlas(const std::string& name, const std::string& filename);
 
 		/// <summary>
 		/// Get a reference to the contents of an atlas (texture and frames)
 		/// </summary>
 		/// <param name="name">: Atlas name</param>
 		/// <returns>A reference to an atlas</returns>
-		AtlasContent& getAtlas(std::string name);
+		AtlasContent& getAtlas(const std::string& name);
 
 		/// <summary>
 		/// Get the frame of an atlas
@@ -75,40 +75,40 @@ namespace mke
 		/// <param name="atlas_name">: Atlas name</param>
 		/// <param name="frame_name">: Frame name (defined in the json)</param>
 		/// <returns>An sf::IntRect of the frame</returns>
-		sf::IntRect getAtlasFrame(std::string atlas_name, std::string frame_name);
+		sf::IntRect getAtlasFrame(const std::string& atlas_name, const std::string& frame_name);
 
 		/// <summary>
 		/// Get the texture of an atlas
 		/// </summary>
 		/// <param name="name">: Atlas name</param>
 		/// <returns>A reference to the texture</returns>
-		sf::Texture& getAtlasTexture(std::string name);
+		sf::Texture& getAtlasTexture(const std::string& name);
 
 		/// <summary>
 		/// Unload an atlas
 		/// </summary>
 		/// <param name="name">: Atlas name</param>
-		void unloadAtlas(std::string name);
+		void unloadAtlas(const std::string& name);
 
 		/// <summary>
 		/// Load a font
 		/// </summary>
 		/// <param name="name">: Font name</param>
 		/// <param name="filename">: Font file path</param>
-		void loadFont(std::string name, std::string filename);
+		void loadFont(const std::string& name, const std::string& filename);
 		
 		/// <summary>
 		/// Get a font
 		/// </summary>
 		/// <param name="name">: Font name</param>
 		/// <returns>A reference to a font</returns>
-		sf::Font& getFont(std::string name);
+		sf::Font& getFont(const std::string& name);
 
 		/// <summary>
 		/// Unload a font
 		/// </summary>
 		/// <param name="name">: Font name</param>
-		void unloadFont(std::string name);
+		void unloadFont(const std::string& name);
 
 		/// <summary>
 		/// A manager for custom assets
@@ -126,20 +126,20 @@ namespace mke
 			/// <param name="...args">: Asset constructor arguments (if necessary)</param>
 			/// <returns>A reference to the assets</returns>
 			template<typename... Args>
-			T& loadNew(std::string name, Args &&... args);
+			T& loadNew(const std::string& name, Args &&... args);
 
 			/// <summary>
 			/// Get an asset
 			/// </summary>
 			/// <param name="name">: Asset name</param>
 			/// <returns>A reference to an asset</returns>
-			T& get(std::string name);
+			T& get(const std::string& name);
 
 			/// <summary>
 			/// Unload an asset
 			/// </summary>
 			/// <param name="name">: Asset name</param>
-			void unload(std::string name);
+			void unload(const std::string& name);
 		private:
 			std::unordered_map<std::string, std::unique_ptr<T>> map;
 		};
@@ -151,7 +151,7 @@ namespace mke
 	};
 	template<typename T>
 	template<typename ...Args>
-	inline T& AssetManager::CustomManager<T>::loadNew(std::string name, Args && ...args)
+	inline T& AssetManager::CustomManager<T>::loadNew(const std::string& name, Args && ...args)
 	{
 		if (map.count(name) == 1)
 			std::exit(-1);
@@ -159,12 +159,12 @@ namespace mke
 		return *map[name].get();
 	}
 	template<typename T>
-	inline T& AssetManager::CustomManager<T>::get(std::string name)
+	inline T& AssetManager::CustomManager<T>::get(const std::string& name)
 	{
 		return *map[name].get();
 	}
 	template<typename T>
-	inline void AssetManager::CustomManager<T>::unload(std::string name)
+	inline void AssetManager::CustomManager<T>::unload(const std::string& name)
 	{
 		map.erase(name);
 	}

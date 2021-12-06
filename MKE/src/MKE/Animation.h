@@ -32,7 +32,7 @@ namespace mke
 		/// Load an animation from a json file
 		/// </summary>
 		/// <param name="filename">: Path to json file that contains animation data</param>
-		void loadFromFile(std::string filename);
+		void loadFromFile(const std::string& filename);
 
 		/// <summary>
 		/// Load an animation from a json object 
@@ -45,13 +45,13 @@ namespace mke
 		/// </summary>
 		/// <param name="frame_name">: Frame name (the one defined in the json file)</param>
 		/// <param name="duration">: Frame duration</param>
-		void addFrame(std::string frame_name, sf::Time duration);
+		void addFrame(const std::string& frame_name, sf::Time duration);
 
 		/// <summary>
 		/// Set the sprite frame manually (useful if animation is not running)
 		/// </summary>
 		/// <param name="frame_name">: Frame name</param>
-		void setSpriteFrame(std::string frame_name);
+		void setSpriteFrame(const std::string& frame_name);
 
 		/// <summary>
 		/// Set the sprite frame manually (useful if animation is not running)
@@ -68,7 +68,7 @@ namespace mke
 		/// Run the animation
 		/// </summary>
 		/// <param name="dt">: Delta time </param>
-		void run(sf::Time dt);
+		void run(const sf::Time dt);
 
 		/// <summary>
 		/// Get the number of loops that the animation went through

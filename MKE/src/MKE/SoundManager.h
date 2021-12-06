@@ -22,26 +22,26 @@ namespace mke
 		/// </summary>
 		/// <param name="name">: Sound buffer name</param>
 		/// <param name="filename">: Sound buffer file path</param>
-		void loadSoundBuffer(std::string name, std::string filename);
+		void loadSoundBuffer(const std::string& name, const std::string& filename);
 
 		/// <summary>
 		/// Unload a sound buffer
 		/// </summary>
 		/// <param name="name">: Sound buffer name</param>
-		void unloadSoundBuffer(std::string name);
+		void unloadSoundBuffer(const std::string& name);
 
 		/// <summary>
 		/// Play a sound
 		/// </summary>
 		/// <param name="name">: Sound buffer name</param>
-		void playSound(std::string name);
+		void playSound(const std::string& name);
 
 		/// <summary>
 		/// Play a sound
 		/// </summary>
 		/// <param name="name">: Sound buffer name</param>
 		/// <param name="settings">: Lambda for sound settings</param>
-		void playSound(std::string name, std::function<void(sf::Sound&)> settings);
+		void playSound(const std::string& name, std::function<void(sf::Sound&)> settings);
 
 		/// <summary>
 		/// Must be called at the start of the main loop so that sounds can be disposed of
@@ -53,14 +53,14 @@ namespace mke
 		/// </summary>
 		/// <param name="name">: Music name</param>
 		/// <param name="filename">: Music file path</param>
-		void setMusicFilename(std::string name, std::string filename);
+		void setMusicFilename(const std::string& name, const std::string& filename);
 
 		/// <summary>
 		/// Get music filename
 		/// </summary>
 		/// <param name="name">: Music name</param>
 		/// <returns>A string with the music file path</returns>
-		std::string getMusicFilename(std::string name);
+		std::string getMusicFilename(const std::string& name);
 
 		/// <summary>
 		/// Get the music
@@ -73,7 +73,7 @@ namespace mke
 		/// </summary>
 		/// <param name="name">: Music name (to open from file)</param>
 		/// <returns>A reference to the music (that opens from file)</returns>
-		sf::Music& getMusicAs(std::string name);
+		sf::Music& getMusicAs(const std::string& name);
 	private:
 		const unsigned int sounds_limit = 255;
 		std::unordered_map<std::string, sf::SoundBuffer> sound_buffers;
