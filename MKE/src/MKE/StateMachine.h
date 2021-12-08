@@ -111,11 +111,8 @@ namespace mke
 	template<typename Base>
 	inline Base& StateMachine<Base>::top()
 	{
-		if (states.size() == 0)
-		{
-			std::cerr << "Error: mke::StateMachine::top(): stack is empty\n";
-			exit(-1);
-		}
+		if (states.empty())
+			throw std::logic_error("Error: mke::StateMachine::top(): stack is empty\n");
 		return *states.back().get();
 	}
 
