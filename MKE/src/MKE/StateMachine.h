@@ -2,7 +2,10 @@
 
 #include "State.h"
 
+#include <algorithm>
+#include <exception>
 #include <iostream>
+#include <iterator>
 #include <memory>
 #include <type_traits>
 #include <typeinfo>
@@ -77,19 +80,26 @@ namespace mke
 	template<typename T, typename std::enable_if_t<std::is_base_of<Base, T>::value, bool>>
 	inline void StateMachine<Base>::popStatesUntil()
 	{
-		while (states.size() && typeid(T) != typeid(*states.back().get()))
-			states.pop_back();
+		auto it = std::find_if(states.begin(), states.end(), [](const auto& state)
+			{
+				return typeid(T) == typeid(*state.get());
+			});
+		if (it == std::end(states))
+			throw std::logic_error("Error: mke::StateMachine::popStatesUntil<T>: State not found in stack\n");
+		states.erase(it + 1, states.end());
 	}
 
 	template<typename Base>
 	template<typename T, std::enable_if_t<std::is_base_of<Base, T>::value, bool>>
 	inline T& StateMachine<Base>::peekFirst()
 	{
-		for (unsigned int i = states.size() - 2; i >= 0; i--)
-			if (typeid(T) == typeid(*states[i].get()))
-				return *dynamic_cast<T*>(states[i].get());
-		std::cerr << "Error: mke::StateMachine::peekFirst(): peeked state doesn't exist in the stack\n";
-		exit(-1);
+		auto it = std::find_if(states.begin(), states.end(), [](const auto& state)
+			{
+				return typeid(T) == typeid(*state.get());
+			});
+		if (it == std::end(states))
+			throw std::logic_error("Error: mke::StateMachine::peekFirst<T>: State not found in stack\n");
+		return *dynamic_cast<T*>(states[std::distance(states.begin(), it)].get());
 	}
 
 	template<typename Base>
