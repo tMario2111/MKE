@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 project(mke)
 
-add_executable(mke main.cpp
+add_library(mke
     source/Animation.hpp source/Animation.cpp
     source/AssetManager.hpp source/AssetManager.cpp
     source/Input.hpp source/Input.cpp
