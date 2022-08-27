@@ -1,28 +1,26 @@
 # MKE
 
-### Description
+## Description
 
 MKE is an extension to SFML that comes with the following features:
 - State machine
 - Asset manager
 - Sound manager
 - Animations 
-- Delta time
 - Input
 - Random 
 - Shadow caster
 - Sprite batching 
-- Particle manager
 - Other utilities
 
-### Documentation
+## Documentation
 
 The documentation can be found in the source code. 
 
-### Tutorials
+## Tutorials
 
 There are several examples in the "examples" folder
 
-### Dependencies
+## Dependencies
 - SFML
-- nlohmann/json
+- nlohmann-json
