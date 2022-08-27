@@ -1,33 +1,33 @@
 
-#include "../../MKE/src/MKE/StateMachine.h"
+#include "../../source/StateMachine.hpp"
+
 #include <iostream>
  
 class State1 : public mke::State
 {
 public:
-	virtual void update() 
+	void update() override 
 	{
 		std::cout << "State1\n";
 	};
-	virtual void render() {};
+	void render() override {};
+
 	int x = 10;
-private:
 };
 
 class State2 : public mke::State
 {
 public:
-	virtual void update() 
+	void update() override 
 	{
 		std::cout << "State2\n";
 	};
-	virtual void render() {};
-private:
+	void render() override {};
 };
 
 int main()
 {
-	mke::StateMachine states;
+	mke::StateMachine states{};
 
 	states.push<State1>();
 	states.push<State2>();
@@ -43,6 +43,14 @@ int main()
 
 	states.push<State2>();
 	std::cout << states.peekFirst<State1>().x << '\n'; // "10"
+
+	states.pop();
+	states.push<State1>();
+	auto state = states.tryPeekFirst<State2>();
+	if (state.has_value())
+		std::cout << "State is in stack\n";
+	else 
+		std::cout << "State is not in stack\n";
 
 	return 0;
 }

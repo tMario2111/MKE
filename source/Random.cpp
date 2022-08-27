@@ -1,4 +1,4 @@
-#include "Random.h"
+#include "Random.hpp"
 
 namespace mke
 {
@@ -7,11 +7,13 @@ namespace mke
 		random_engine.seed(seed);
 		this->seed = seed;
 	}
+
 	void Random::setUniqueSeed()
 	{
 		this->seed = r();
 		random_engine.seed(this->seed);
 	}
+
 	unsigned long int Random::getSeed()
 	{
 		return this->seed;

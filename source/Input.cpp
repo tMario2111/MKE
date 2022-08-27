@@ -1,4 +1,4 @@
-#include "Input.h"
+#include "Input.hpp"
 
 namespace mke
 {
@@ -22,6 +22,7 @@ namespace mke
 			break;
 		}
 	}
+
 	void Input::update()
 	{
 		for (auto& i : keyboard_input)
@@ -31,18 +32,22 @@ namespace mke
 			if (i.second == KeyState::Released)
 				i.second = KeyState::None;
 	}
+
 	bool Input::isKeyPressed(sf::Keyboard::Key key)
 	{
 		return keyboard_input[key] == KeyState::Pressed;
 	}
+
 	bool Input::isKeyReleased(sf::Keyboard::Key key)
 	{
 		return keyboard_input[key] == KeyState::Released;
 	}
+
 	bool Input::isMouseButtonPressed(sf::Mouse::Button button)
 	{
 		return mouse_input[button] == KeyState::Pressed;
 	}
+    
 	bool Input::isMouseButtonReleased(sf::Mouse::Button button)
 	{
 		return mouse_input[button] == KeyState::Released;

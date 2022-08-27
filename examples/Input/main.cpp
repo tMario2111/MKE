@@ -1,20 +1,27 @@
+#include "../../source/Input.hpp"
+
 #include <SFML/Graphics.hpp>
-#include "../../MKE/src/MKE/Input.h"
+
 #include <iostream>
 
 int main()
 {
-	sf::RenderWindow win(sf::VideoMode(800, 800), "Input example", sf::Style::Close);
+	sf::RenderWindow win{ sf::VideoMode{ 800, 800 }, "Input example", sf::Style::Close };
+	win.setFramerateLimit(0);
 	win.setVerticalSyncEnabled(true);
 
-	mke::Input input;
+	mke::Input input{};
 
 	while (win.isOpen())
 	{
-		input.update(); // update the input at the start of each frame
+		// update the input at the start of each frame
+		input.update();
+
 		for (sf::Event event; win.pollEvent(event);)
 		{
-			input.processEvent(event); // process key and mouse events
+			// process key and mouse events
+			input.processEvent(event);
+
 			switch (event.type)
 			{
 			case sf::Event::Closed:
@@ -29,6 +36,7 @@ int main()
 			std::cout << "Space pressed\n";
 		else if (input.isKeyReleased(sf::Keyboard::Space))
 			std::cout << "Space released\n";
+			
 		if (input.isMouseButtonPressed(sf::Mouse::Left))
 			std::cout << "Left mouse button pressed\n";
 		else if (input.isMouseButtonReleased(sf::Mouse::Left))

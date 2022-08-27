@@ -1,8 +1,8 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include "Utility.hpp"
 
-#include "Utility.h"
+#include <SFML/Graphics.hpp>
 
 #include <algorithm>
 #include <iostream>
@@ -13,49 +13,51 @@
 
 namespace mke
 {
-	/// <summary>
-	/// a shadow caster class
-	/// </summary>
+	/**
+	 * @brief A shadow casting class
+	 * 
+	 */
 	class ShadowCaster : public sf::Drawable
 	{
 	public:
 
-		/// <summary>
-		/// Default constructor
-		/// </summary>
-		/// <param name="win">: A RenderWindow</param>
 		ShadowCaster(sf::RenderWindow& win);
 
-		/// <summary>
-		/// The vector of edges that are used by the shadow caster. Modify this vector
-		/// according to your edges
-		/// </summary>
+        /**
+         * @brief The vector of edges that are used by the shadow caster. Modify this vector according to your edges
+         * 
+         */
 		std::vector<std::pair<sf::Vector2f, sf::Vector2f>> edges;
 
-		/// <summary>
-		/// Set the rays' radius
-		/// </summary>
-		/// <param name="radius">: The maximum lenght of every ray</param>
+        /**
+         * @brief Set the rays' radius
+         * 
+         * @param radius The maximum lenght of a ray
+         */
 		void setRadius(float radius);
 
-		/// <summary>
-		/// Get the radius
-		/// </summary>
-		/// <returns>The radius</returns>
+		/**
+		 * @brief Get the radius
+		 * 
+		 * @return float 
+		 */
 		float getRadius();
 
-		/// <summary>
-		/// Update the ShadowCaster (must be called every frame)
-		/// </summary>
-		/// <param name="reference_point">: The point that the rays are casted from (player's position etc.)</param>
+        /**
+         * @brief Update the shadow caster (must be called every frame)
+         * 
+         * @param reference_point The point that the rays are casted from (the player position for example)
+         */
 		void update(sf::Vector2f reference_point);
 
-		/// <summary>
-		/// Draw function (inherited from sf::Drawable)
-		/// </summary>
-		/// <param name="target">: The sf::RenderTarget</param>
-		/// <param name="states">: The sf::RenderStates</param>
+        /**
+         * @brief Draw function (inherited from sf::Drawable)
+         * 
+         * @param target 
+         * @param states 
+         */
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+
 	private:
 		sf::RenderWindow& win;
 		struct Ray
@@ -75,4 +77,3 @@ namespace mke
 		void drawToRenderTexture();
 	};
 }
-
