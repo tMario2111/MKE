@@ -9,13 +9,13 @@ namespace mke
 	constexpr float PI = 3.14159f;
 	constexpr float SQRT2 = 1.41421f;
 	constexpr float SQRT3 = 1.73205f;
-    
-    /**
-     * @brief Convert radians into degreess
-     * 
-     * @param rad 
-     * @return float 
-     */
+
+	/**
+	 * @brief Convert radians into degreess
+	 * 
+	 * @param rad 
+	 * @return float 
+	 */
 	float toDeg(float rad);
 
 	/**
@@ -35,22 +35,22 @@ namespace mke
 	 */
 	float distance(sf::Vector2f a, sf::Vector2f b);
 
-    /**
-     * @brief Get the rotation / angle to a point
-     * 
-     * @param a First point
-     * @param b Second point
-     * @return float radians
-     */
+	/**
+	 * @brief Get the rotation / angle to a point
+	 * 
+	 * @param a First point
+	 * @param b Second point
+	 * @return float radians
+	 */
 	float getRotationToPoint(sf::Vector2f a, sf::Vector2f b);
 
-    /**
-     * @brief Center an sf::Text with any origin on the x axis
-     * 
-     * @param text 
-     * @param x1 
-     * @param x2 
-     */
+	/**
+	 * @brief Center an sf::Text with any origin on the x axis
+	 * 
+	 * @param text 
+	 * @param x1 
+	 * @param x2 
+	 */
 	void centerTextX(sf::Text& text, float x1, float x2);
 
 	/**

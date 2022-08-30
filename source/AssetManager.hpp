@@ -12,20 +12,20 @@
 
 namespace mke
 {
-    /**
-     * @brief A class that manages assets
-     * 
-     */
+	/**
+	 * @brief A class that manages assets
+	 * 
+	 */
 	class AssetManager
 	{
 	public:
 
-        /**
-         * @brief Load a texture from a file
-         * 
-         * @param name 
-         * @param filename 
-         */
+		/**
+		 * @brief Load a texture from a file
+		 * 
+		 * @param name 
+		 * @param filename 
+		 */
 		void loadTexture(const std::string& name, const std::string& filename);
 
 		/**
@@ -61,37 +61,37 @@ namespace mke
 			std::unordered_map<std::string, sf::IntRect> frames;
 		};
 
-        /**
-         * @brief Load an atlas from a file
-         * 
-         * @param name 
-         * @param filename The image file and the json file must have the same path and name (excepting extensions)
-         */
+		/**
+		 * @brief Load an atlas from a file
+		 * 
+		 * @param name 
+		 * @param filename The image file and the json file must have the same path and name (excepting extensions)
+		 */
 		void loadAtlas(const std::string& name, const std::string& filename);
 
-        /**
-         * @brief Get a reference to the contents of an atlas
-         * 
-         * @param name 
-         * @return AtlasContent& 
-         */
+		/**
+		 * @brief Get a reference to the contents of an atlas
+		 * 
+		 * @param name 
+		 * @return AtlasContent& 
+		 */
 		AtlasContent& getAtlas(const std::string& name);
 
-        /**
-         * @brief Get a frame of an atlas
-         * 
-         * @param atlas_name 
-         * @param frame_name Defined in the json file
-         * @return sf::IntRect 
-         */
+		/**
+		 * @brief Get a frame of an atlas
+		 * 
+		 * @param atlas_name 
+		 * @param frame_name Defined in the json file
+		 * @return sf::IntRect 
+		 */
 		sf::IntRect getAtlasFrame(const std::string& atlas_name, const std::string& frame_name);
 
-        /**
-         * @brief Get the texture of an atlas
-         * 
-         * @param name 
-         * @return sf::Texture& 
-         */
+		/**
+		 * @brief Get the texture of an atlas
+		 * 
+		 * @param name 
+		 * @return sf::Texture& 
+		 */
 		sf::Texture& getAtlasTexture(const std::string& name);
 
 		/**
@@ -133,14 +133,14 @@ namespace mke
 		{
 		public:
 
-            /**
-             * @brief Load a new assets
-             * 
-             * @tparam Args Asset constructor arguments
-             * @param name 
-             * @param args 
-             * @return T& A reference to the assets
-             */
+			/**
+			 * @brief Load a new assets
+			 * 
+			 * @tparam Args Asset constructor arguments
+			 * @param name 
+			 * @param args 
+			 * @return T& A reference to the assets
+			 */
 			template<typename... Args>
 			T& loadNew(const std::string& name, Args &&... args);
 
@@ -162,7 +162,7 @@ namespace mke
 		private:
 			std::unordered_map<std::string, std::unique_ptr<T>> map;
 		};
-        
+
 	private:
 		std::unordered_map<std::string, sf::Texture> textures;
 		std::unordered_map<std::string, AtlasContent> atlases;
@@ -175,11 +175,11 @@ namespace mke
 	inline T& AssetManager::CustomManager<T>::loadNew(const std::string& name, Args && ...args)
 	{
 		if (map.count(name) == 1)
-        {
-            std::cerr << "Error: mke::AssetManager::CustomManager::loadNew(): asset with name \"" << name << "\" "
-                << "already exists";
+		{
+			std::cerr << "Error: mke::AssetManager::CustomManager::loadNew(): asset with name \"" << name << "\" "
+				<< "already exists";
 			std::exit(EXIT_FAILURE);
-        }
+		}
 		map[name] = std::make_unique<T>(std::forward<Args>(args)...);
 		return *map[name].get();
 	}
@@ -189,7 +189,7 @@ namespace mke
 	{
 		return *map[name].get();
 	}
-    
+
 	template<typename T>
 	inline void AssetManager::CustomManager<T>::unload(const std::string& name)
 	{

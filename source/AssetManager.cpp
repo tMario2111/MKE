@@ -26,7 +26,7 @@ namespace mke
 		if (textures.count(name) == 0)
 		{
 			std::cerr << "Error: mke::AssetManager::getTexture(): texture with name \"" << name 
-                << "\" does not exist\n";
+				<< "\" does not exist\n";
 			exit(EXIT_FAILURE);
 		}
 		return textures[name];
@@ -74,10 +74,10 @@ namespace mke
 
 	AssetManager::AtlasContent& AssetManager::getAtlas(const std::string& name)
 	{
-        if (atlases.count(name) == 0)
+		if (atlases.count(name) == 0)
 		{
 			std::cerr << "Error: mke::AssetManager::getAtlas(): atlas with name \"" << name 
-                << "\" does not exist\n";
+				<< "\" does not exist\n";
 			exit(EXIT_FAILURE);
 		}
 		return atlases[name];
@@ -88,13 +88,13 @@ namespace mke
 		if (atlases.count(atlas_name) == 0)
 		{
 			std::cerr << "Error: mke::AssetManager::getAtlasFrame(): atlas with name \"" << atlas_name 
-                << "\" does not exist\n";
+				<< "\" does not exist\n";
 			exit(EXIT_FAILURE);
 		}
 		if (atlases[atlas_name].frames.count(frame_name) == 0)
 		{
 			std::cerr << "Error: mke::AssetManager::getAtlasFrame(): frame with name \"" << frame_name 
-                << "\" does not exist\n";
+				<< "\" does not exist\n";
 			exit(EXIT_FAILURE);
 		}
 		return atlases[atlas_name].frames[frame_name];
@@ -129,10 +129,10 @@ namespace mke
 
 	sf::Font& AssetManager::getFont(const std::string& name)
 	{
-        if (fonts.count(name) == 0)
+		if (fonts.count(name) == 0)
 		{
 			std::cerr << "Error: mke::AssetManager::getFont(): font with name \"" << name 
-                << "\" does not exist\n";
+				<< "\" does not exist\n";
 			exit(EXIT_FAILURE);
 		}
 		return fonts[name];

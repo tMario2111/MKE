@@ -16,11 +16,11 @@ namespace mke
 	{
 	public:
 
-        /**
-         * @brief The maximum number of sounds that can be played at the same time
-         * 
-         */
-        static constexpr unsigned int sounds_limit = 255;
+		/**
+		 * @brief The maximum number of sounds that can be played at the same time
+		 * 
+		 */
+		static constexpr unsigned int sounds_limit = 255;
 
 		/**
 		 * @brief Load a sound buffer
@@ -81,14 +81,14 @@ namespace mke
 		 */
 		sf::Music& getMusic();
 
-        /**
-         * @brief Get the music and play the specified file
-         * 
-         * @param name 
-         * @return sf::Music& 
-         */
+		/**
+		 * @brief Get the music and play the specified file
+		 * 
+		 * @param name 
+		 * @return sf::Music& 
+		 */
 		sf::Music& getMusicAs(const std::string& name);
-        
+
 	private:
 		std::unordered_map<std::string, sf::SoundBuffer> sound_buffers;
 		std::vector<std::unique_ptr<sf::Sound>> sounds;

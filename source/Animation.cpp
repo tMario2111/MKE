@@ -2,18 +2,18 @@
 
 namespace mke
 {
-    void Animation::setSprite(sf::Sprite& sprite)
-    {
-        this->sprite = &sprite;
-        if (this->atlas != nullptr)
-            this->sprite->setTexture(this->atlas->texture);
-    }
+	void Animation::setSprite(sf::Sprite& sprite)
+	{
+		this->sprite = &sprite;
+		if (this->atlas != nullptr)
+			this->sprite->setTexture(this->atlas->texture);
+	}
 
 	void Animation::setAtlas(mke::AssetManager::AtlasContent& atlas)
 	{
 		this->atlas = &atlas;
 		if (this->sprite != nullptr)
-            this->sprite->setTexture(atlas.texture);
+			this->sprite->setTexture(atlas.texture);
 	}
 
 	void Animation::loadFromFile(const std::string& filename)
@@ -31,7 +31,7 @@ namespace mke
 		for (const auto& i : json["frames"].items())
 		{
 			Frame frame{};
-            frame.rect = atlas->frames[i.value()["name"]];
+			frame.rect = atlas->frames[i.value()["name"]];
 			frame.duration = sf::seconds(i.value()["duration"]);
 			frames.push_back(frame);
 		}
@@ -64,12 +64,12 @@ namespace mke
 
 	void Animation::setSpriteFrame(const std::string& frame_name)
 	{
-        if (atlas->frames.count(frame_name) == 0)
-        {
-            std::cerr << "Error: mke::Animation::setSpriteFrame(): frame with name \"" << frame_name <<
-                "\" does not exist";
-            exit(EXIT_FAILURE);
-        } 
+		if (atlas->frames.count(frame_name) == 0)
+		{
+			std::cerr << "Error: mke::Animation::setSpriteFrame(): frame with name \"" << frame_name <<
+				"\" does not exist";
+			exit(EXIT_FAILURE);
+		}
 		sprite->setTextureRect(atlas->frames[frame_name]);
 	}
 
@@ -81,7 +81,7 @@ namespace mke
 				"the number of frames\n";
 			exit(EXIT_FAILURE);
 		}
-        sprite->setTextureRect(frames[index].rect);
+		sprite->setTextureRect(frames[index].rect);
 	}
 
 	void Animation::reset()

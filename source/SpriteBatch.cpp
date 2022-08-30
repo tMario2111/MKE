@@ -25,11 +25,11 @@ namespace mke
 		verts[2].position = sprite.getTransform().transformPoint(texture_rect.width, texture_rect.height);
 		verts[3].position = sprite.getTransform().transformPoint(0.f, texture_rect.height);
 
-        for (auto& vert : verts)
-        {
-            vert.color = sprite.getColor();
-            batch.append(vert);
-        }
+		for (auto& vert : verts)
+		{
+			vert.color = sprite.getColor();
+			batch.append(vert);
+		}
 	}
 
 	void SpriteBatch::clear()

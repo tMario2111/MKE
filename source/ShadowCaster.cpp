@@ -34,19 +34,19 @@ namespace mke
 
 	bool ShadowCaster::getLineIntersection(sf::Vector2f p1, sf::Vector2f p2, sf::Vector2f p3, sf::Vector2f p4, sf::Vector2f& p5)
 	{
-		float dx12 = p2.x - p1.x;
-		float dy12 = p2.y - p1.y;
-		float dx34 = p4.x - p3.x;
-		float dy34 = p4.y - p3.y;
-		float denominator = (dy12 * dx34 - dx12 * dy34);
-		float t1 = ((p1.x - p3.x) * dy34 + (p3.y - p1.y) * dx34) / denominator;
+		auto dx12 = p2.x - p1.x;
+		auto dy12 = p2.y - p1.y;
+		auto dx34 = p4.x - p3.x;
+		auto dy34 = p4.y - p3.y;
+		auto denominator = (dy12 * dx34 - dx12 * dy34);
+		auto t1 = ((p1.x - p3.x) * dy34 + (p3.y - p1.y) * dx34) / denominator;
 		if (isinf(t1))
 		{
-			p5 = sf::Vector2f(NAN, NAN);
+			p5 = sf::Vector2f{ NAN, NAN };
 			return false;
 		}
-		float t2 = ((p3.x - p1.x) * dy12 + (p1.y - p3.y) * dx12) / -denominator;
-		p5 = sf::Vector2f(p1.x + dx12 * t1, p1.y + dy12 * t1);
+		auto t2 = ((p3.x - p1.x) * dy12 + (p1.y - p3.y) * dx12) / -denominator;
+		p5 = sf::Vector2f{ p1.x + dx12 * t1, p1.y + dy12 * t1 };
 		return ((t1 >= 0) && (t1 <= 1) && (t2 >= 0) && (t2 <= 1));
 	}
 
@@ -70,11 +70,11 @@ namespace mke
 		corners.resize(std::distance(corners.begin(), std::unique(corners.begin(), corners.end())));
 
 		rays.clear();
-		float angle_diff = 0.00001f;
+		const auto angle_diff = 0.00001f;
 		for (const auto& i : corners)
 		{
-			Ray ray;
-			float angle = atan2f(i.y - reference_point.y, i.x - reference_point.x);
+			Ray ray{};
+			const auto angle = atan2f(i.y - reference_point.y, i.x - reference_point.x);
 
 			ray.position.x = reference_point.x + radius * cosf(angle);
 			ray.position.y = reference_point.y + radius * sinf(angle);
@@ -94,13 +94,13 @@ namespace mke
 
 		for (auto& i : rays)
 		{
-			float min = INFINITY;
+			auto min = INFINITY;
 			for (auto& j : edges)
 			{
-				sf::Vector2f intersection;
+				sf::Vector2f intersection{};
 				if (getLineIntersection(reference_point, i.position, j.first, j.second, intersection))
 				{
-					float dist = mke::distance(intersection, reference_point);
+					const auto dist = mke::distance(intersection, reference_point);
 					if (dist < min)
 					{
 						i.position = intersection;
@@ -144,7 +144,7 @@ namespace mke
 		render_texture.clear();
 		render_texture.draw(vision_triangle_fan);
 		render_texture.display();
-        
+
 		shader.setUniform("u_resolution", static_cast<sf::Vector2f>(render_texture.getSize()));
 		shader.setUniform("u_texture", render_texture.getTexture());
 	}

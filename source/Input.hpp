@@ -15,11 +15,11 @@ namespace mke
 	{
 	public:
 
-        /**
-         * @brief Process keyboard and mouse events
-         * 
-         * @param event Currently polled event
-         */
+		/**
+		 * @brief Process keyboard and mouse events
+		 * 
+		 * @param event Currently polled event
+		 */
 		void processEvent(const sf::Event& event);
 
 		/**

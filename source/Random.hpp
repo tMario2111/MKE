@@ -34,24 +34,24 @@ namespace mke
 		 */
 		unsigned long int getSeed();
 
-        /**
-         * @brief Get a random integer
-         * 
-         * @tparam T Integer type
-         * @param min Minimum value
-         * @param max Maximum value (must be greater than the minimum)
-         * @return T 
-         */
+		/**
+		 * @brief Get a random integer
+		 * 
+		 * @tparam T Integer type
+		 * @param min Minimum value
+		 * @param max Maximum value (must be greater than the minimum)
+		 * @return T 
+		 */
 		template<typename T> T getInt(T min, T max);
 
-        /**
-         * @brief Get a random real number
-         * 
-         * @tparam T Real type
-         * @param min Minimum value
-         * @param max Maximum value (must be greater than the minimum)
-         * @return T 
-         */
+		/**
+		 * @brief Get a random real number
+		 * 
+		 * @tparam T Real type
+		 * @param min Minimum value
+		 * @param max Maximum value (must be greater than the minimum)
+		 * @return T 
+		 */
 		template<typename T> T getReal(T min, T max);
 
 	private:

@@ -23,17 +23,17 @@ namespace mke
 
 		ShadowCaster(sf::RenderWindow& win);
 
-        /**
-         * @brief The vector of edges that are used by the shadow caster. Modify this vector according to your edges
-         * 
-         */
+		/**
+		 * @brief The vector of edges that are used by the shadow caster. Modify this vector according to your edges
+		 * 
+		 */
 		std::vector<std::pair<sf::Vector2f, sf::Vector2f>> edges;
 
-        /**
-         * @brief Set the rays' radius
-         * 
-         * @param radius The maximum lenght of a ray
-         */
+		/**
+		 * @brief Set the rays' radius
+		 * 
+		 * @param radius The maximum lenght of a ray
+		 */
 		void setRadius(float radius);
 
 		/**
@@ -43,19 +43,19 @@ namespace mke
 		 */
 		float getRadius();
 
-        /**
-         * @brief Update the shadow caster (must be called every frame)
-         * 
-         * @param reference_point The point that the rays are casted from (the player position for example)
-         */
+		/**
+		 * @brief Update the shadow caster (must be called every frame)
+		 * 
+		 * @param reference_point The point that the rays are casted from (the player position for example)
+		 */
 		void update(sf::Vector2f reference_point);
 
-        /**
-         * @brief Draw function (inherited from sf::Drawable)
-         * 
-         * @param target 
-         * @param states 
-         */
+		/**
+		 * @brief Draw function (inherited from sf::Drawable)
+		 * 
+		 * @param target 
+		 * @param states 
+		 */
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 	private:

@@ -2,7 +2,7 @@
 #include "../../source/StateMachine.hpp"
 
 #include <iostream>
- 
+
 class State1 : public mke::State
 {
 public:
