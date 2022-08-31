@@ -6,9 +6,9 @@
 
 namespace mke
 {
-	constexpr float PI = 3.14159f;
-	constexpr float SQRT2 = 1.41421f;
-	constexpr float SQRT3 = 1.73205f;
+	constexpr auto PI = 3.14159f;
+	constexpr auto SQRT2 = 1.41421f;
+	constexpr auto SQRT3 = 1.73205f;
 
 	/**
 	 * @brief Convert radians into degreess
@@ -16,7 +16,10 @@ namespace mke
 	 * @param rad 
 	 * @return float 
 	 */
-	float toDeg(float rad);
+	inline float toDeg(float rad) 
+	{
+		return rad * 180.f / PI; 
+	}
 
 	/**
 	 * @brief Convert degrees into radians
@@ -24,7 +27,21 @@ namespace mke
 	 * @param deg 
 	 * @return float 
 	 */
-	float toRad(float deg);
+	inline float toRad(float deg) 
+	{
+		return deg * PI / 180.f; 
+	}
+	
+	/**
+	 * @brief Get the square of a float
+	 * 
+	 * @param n 
+	 * @return float 
+	 */
+	inline float pow2(float n)
+	{
+		return n * n;
+	}
 
 	/**
 	 * @brief Get the distance between 2 points
@@ -33,7 +50,22 @@ namespace mke
 	 * @param b Second point
 	 * @return
 	 */
-	float distance(sf::Vector2f a, sf::Vector2f b);
+	inline float distance(sf::Vector2f a, sf::Vector2f b) 
+	{
+		return sqrtf(pow2(b.x - a.x) + pow2(b.y - a.y));
+	}
+
+	/**
+	 * @brief Get the squared distance between 2 points (much faster that mke::distance)
+	 * 
+	 * @param a 
+	 * @param b 
+	 * @return float 
+	 */
+	inline float squaredDistance(sf::Vector2f a, sf::Vector2f b)
+	{
+		return pow2(b.x - a.x) + pow2(b.y - a.y);
+	}
 
 	/**
 	 * @brief Get the rotation / angle to a point

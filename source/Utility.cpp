@@ -2,26 +2,6 @@
 
 namespace mke
 {
-	float toDeg(float rad)
-	{
-		return rad * 180.f / PI;
-	}
-
-	float toRad(float deg)
-	{
-		return deg * PI / 180.f;
-	}
-
-	float distance(sf::Vector2f a, sf::Vector2f b)
-	{
-		return sqrtf((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y));
-	}
-
-	float getRotationToPoint(sf::Vector2f a, sf::Vector2f b)
-	{
-		return atan2f(b.y - a.y, b.x - a.x);
-	}
-
 	void centerTextX(sf::Text& text, float x1, float x2)
 	{
 		sf::Vector2f position{};
