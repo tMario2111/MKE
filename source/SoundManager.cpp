@@ -2,6 +2,11 @@
 
 namespace mke
 {
+	unsigned int SoundManager::getSoundsLimit()
+	{
+		return sounds_limit;
+	}
+
 	void SoundManager::loadSoundBuffer(const std::string& name, const std::string& filename)
 	{
 		if (sound_buffers.count(name) == 1)
